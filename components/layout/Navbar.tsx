@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { NAV_LINKS } from "@/constants/navigation";
-import Logo from "./Logo";
+import Logo from "@/components/common/Logo";
+import LanguageToggle from "@/components/ui/LanguageToggle";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 export default function Navbar() {
   return (
@@ -24,15 +26,10 @@ export default function Navbar() {
         </nav>
 
         {/* Right Side */}
-        <div className="flex items-center gap-4">
-          <button className="rounded-md border px-3 py-2 text-sm">
-            English
-          </button>
-
-          <button className="text-xl">
-            🌙
-          </button>
-        </div>
+        <div className="flex items-center gap-3">
+  <LanguageToggle />
+  <ThemeToggle />
+</div>
 
       </div>
     </header>
