@@ -1,22 +1,29 @@
+import {
+  CreditCard,
+  IdCard,
+  Car,
+  BookOpen,
+} from "lucide-react";
+
 export const popularDocuments = [
   {
     title: "Aadhaar Card",
-    description: "Apply, update or download your Aadhaar.",
-    icon: "🪪",
+    description: "Apply, update and download Aadhaar.",
+    icon: IdCard,
   },
   {
     title: "PAN Card",
-    description: "Apply for a new PAN or make corrections.",
-    icon: "💳",
+    description: "New PAN and correction services.",
+    icon: CreditCard,
   },
   {
     title: "Passport",
-    description: "Apply for a fresh passport or renew it.",
-    icon: "🛂",
+    description: "Fresh passport and renewal guide.",
+    icon: BookOpen,
   },
   {
     title: "Driving Licence",
-    description: "Apply, renew or update your licence.",
-    icon: "🚗",
+    description: "Apply, renew or update licence.",
+    icon: Car,
   },
 ];
