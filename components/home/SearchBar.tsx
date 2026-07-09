@@ -3,7 +3,9 @@
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
-import { documents } from "@/data/documents";
+import { getAllDocuments } from "@/lib/documents";
+
+const documents = getAllDocuments();
 
 export default function SearchBar() {
   const [query, setQuery] = useState("");
@@ -12,9 +14,13 @@ export default function SearchBar() {
   const suggestions = useMemo(() => {
     if (!query.trim()) return [];
 
-    return documents.filter((doc) =>
-      doc.title.toLowerCase().includes(query.toLowerCase())
-    );
+    const search = query.toLowerCase();
+
+return documents.filter((doc) =>
+  doc.title.toLowerCase().includes(search) ||
+  doc.description.toLowerCase().includes(search) ||
+  doc.category.toLowerCase().includes(search)
+);
   }, [query]);
 
   const handleSearch = () => {

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { popularDocuments } from "@/data/popularDocuments";
 
 export default function PopularDocuments() {
@@ -13,15 +14,20 @@ export default function PopularDocuments() {
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {popularDocuments.map((document) => (
-          <div
+          <Link
             key={document.title}
-            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+            href={`/documents/${document.slug}`}
+            className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl"
           >
             <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100">
-  <document.icon className="h-7 w-7 text-blue-600" />
-</div>
+              <document.icon className="h-7 w-7 text-blue-600" />
+            </div>
 
-            <h3 className="mb-2 text-xl font-semibold">
+            <span className="inline-block rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
+              {document.category}
+            </span>
+
+            <h3 className="mt-4 mb-2 text-xl font-semibold">
               {document.title}
             </h3>
 
@@ -29,10 +35,10 @@ export default function PopularDocuments() {
               {document.description}
             </p>
 
-            <button className="mt-6 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
-              Learn More →
-            </button>
-          </div>
+            <div className="mt-6 font-semibold text-blue-600 transition group-hover:translate-x-1">
+              View Guide →
+            </div>
+          </Link>
         ))}
       </div>
     </section>
